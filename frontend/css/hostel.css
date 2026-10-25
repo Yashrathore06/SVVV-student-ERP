@@ -1,0 +1,1112 @@
+/* ==========================================================================
+   SVVV ERP — Hostel Registration & Room Selection Stylesheet
+   Strictly styled to match the official SVVV ERP Student Portal design
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #1d4ed8;
+    --primary-hover: #1e40af;
+    --primary-light: #eff6ff;
+    --primary-border: #bfdbfe;
+    --primary-active: #2563eb;
+    --navy-dark: #0f172a;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+    --border-color: #e2e8f0;
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --sidebar-bg: #ffffff;
+    --amber-bg: #fef3c7;
+    --amber-text: #92400e;
+    --amber-border: #fcd34d;
+    --green-bg: #dcfce7;
+    --green-text: #166534;
+    --green-border: #86efac;
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 18px;
+    --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-selected: 0 0 0 2px #2563eb, 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Sidebar Navigation
+   ========================================================================== */
+.sidebar {
+    width: 250px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 16px;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+}
+
+.brand-logo-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-logo-badge img {
+    width: 26px;
+    height: 26px;
+}
+
+.brand-text .brand-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e3a8a;
+    letter-spacing: 0.5px;
+}
+
+.brand-text .brand-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.nav-group {
+    margin-bottom: 22px;
+}
+
+.nav-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 0 12px 8px 12px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    color: #475569;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13.5px;
+    transition: all 0.2s ease;
+}
+
+.nav-item a svg {
+    width: 18px;
+    height: 18px;
+    stroke: #64748b;
+    transition: stroke 0.2s ease;
+}
+
+.nav-item:hover a {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.nav-item:hover a svg {
+    stroke: #0f172a;
+}
+
+.nav-item.active a {
+    background: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.nav-item.active a svg {
+    stroke: var(--primary);
+}
+
+.sidebar-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.logout-link:hover {
+    background: #fef2f2;
+}
+
+.logout-link svg {
+    width: 18px;
+    height: 18px;
+    stroke: #dc2626;
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+.main-wrapper {
+    margin-left: 250px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Top App Header (Image 4 Alignment) */
+.top-header {
+    background: #ffffff;
+    min-height: 68px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 36px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.header-portal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.portal-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.portal-heading {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+.badge-connected {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-radius: 9999px;
+    letter-spacing: 0.5px;
+    border: 1px solid #bfdbfe;
+    text-transform: uppercase;
+}
+
+.portal-subheading {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* User Profile Badge (Image 4 Alignment) */
+.user-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 14px 6px 8px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-circle {
+    width: 36px;
+    height: 36px;
+    background: #eff6ff;
+    color: #1e40af;
+    font-size: 12.5px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-text-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.user-text-info .user-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+}
+
+.user-text-info .user-roll {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* Page Content Body */
+.page-container {
+    max-width: 1040px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 28px 60px 28px;
+}
+
+/* Header Banner */
+.page-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.breadcrumb-tag {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.page-title {
+    font-size: 27px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.academic-year-badge {
+    background: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #dbeafe;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   Status Pills & Notification Banners
+   ========================================================================== */
+.status-banner {
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeIn 0.3s ease;
+}
+
+.status-banner.amber {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    display: flex;
+}
+
+.status-banner.green {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    display: flex;
+}
+
+.status-banner.red {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    display: flex;
+}
+
+.status-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-banner-left svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.status-banner-title {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.status-banner-desc {
+    font-size: 12.5px;
+    opacity: 0.9;
+}
+
+.status-slip-btn {
+    background: #166534;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.status-slip-btn:hover {
+    background: #14532d;
+}
+
+/* ==========================================================================
+   Card 1: Student Profile Record
+   ========================================================================== */
+.profile-record-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-subtle);
+}
+
+.card-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 16px;
+}
+
+.card-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.card-title-group svg {
+    width: 18px;
+    height: 18px;
+    color: #3b82f6;
+}
+
+.pill-badge-verified {
+    background: #e0e7ff;
+    color: #4338ca;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.profile-meta-box {
+    background: #f8fafc;
+    border: 1px solid #edf2f7;
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+}
+
+.meta-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.meta-value {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Section Form Steps
+   ========================================================================== */
+.form-step-section {
+    margin-bottom: 32px;
+}
+
+.step-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.step-number-bubble {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.step-title-group h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.step-title-group p {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+/* Step 1: Hostel Wing Cards (2 Columns) */
+.wing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.selection-card {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.selection-card:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);
+}
+
+.selection-card.selected {
+    border-color: #2563eb;
+    background: #f0f7ff;
+    box-shadow: 0 0 0 1px #2563eb;
+}
+
+.card-radio-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.custom-radio {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.selection-card.selected .custom-radio {
+    border-color: #2563eb;
+    background: #2563eb;
+}
+
+.custom-radio::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: none;
+}
+
+.selection-card.selected .custom-radio::after {
+    display: block;
+}
+
+.card-headline {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.check-badge-icon {
+    width: 16px;
+    height: 16px;
+    color: #2563eb;
+    display: none;
+}
+
+.selection-card.selected .check-badge-icon {
+    display: inline-block;
+}
+
+.card-body-desc {
+    font-size: 12.5px;
+    color: #64748b;
+    margin-left: 28px;
+    margin-bottom: 12px;
+    line-height: 1.45;
+}
+
+.card-footer-badge {
+    margin-left: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    width: fit-content;
+}
+
+.badge-blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.badge-gray {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+/* Step 2: Room Occupancy Cards (3 Columns) */
+.occupancy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.occupancy-card {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.occupancy-card:hover {
+    border-color: #93c5fd;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+.occupancy-card.selected {
+    border-color: #2563eb;
+    background: #f0f7ff;
+    box-shadow: 0 0 0 1px #2563eb, 0 6px 16px rgba(37, 99, 235, 0.08);
+}
+
+.occ-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.occ-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.occ-icon {
+    width: 22px;
+    height: 22px;
+    color: #64748b;
+}
+
+.occupancy-card.selected .occ-icon {
+    color: #2563eb;
+}
+
+.occ-price-row {
+    margin-bottom: 10px;
+}
+
+.occ-price {
+    font-size: 21px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.occupancy-card.selected .occ-price {
+    color: #1d4ed8;
+}
+
+.occ-period {
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.occ-desc {
+    font-size: 12.5px;
+    color: #64748b;
+    line-height: 1.45;
+    margin-bottom: 18px;
+    min-height: 52px;
+}
+
+.occ-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid #edf2f7;
+}
+
+.occ-tag {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.occupancy-card.selected .occ-tag {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.occ-action-text {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Step 3: Climate Facility Cards (2 Columns) */
+.climate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.climate-card {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.climate-card:hover {
+    border-color: #93c5fd;
+}
+
+.climate-card.selected {
+    border-color: #2563eb;
+    background: #f0f7ff;
+    box-shadow: 0 0 0 1px #2563eb;
+}
+
+.climate-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #475569;
+}
+
+.climate-card.selected .climate-icon-box {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.climate-content {
+    flex: 1;
+}
+
+.climate-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.climate-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.climate-desc {
+    font-size: 12.5px;
+    color: #64748b;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.climate-billed {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.climate-card.selected .climate-billed {
+    color: #1d4ed8;
+}
+
+/* ==========================================================================
+   Section 4: Total Hostel Fee Breakdown (Per Semester)
+   ========================================================================== */
+.breakdown-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-subtle);
+}
+
+.breakdown-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.breakdown-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.breakdown-title svg {
+    width: 18px;
+    height: 18px;
+    color: #2563eb;
+}
+
+.breakdown-tag {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.breakdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.breakdown-sub-box {
+    background: #f8fafc;
+    border: 1px solid #edf2f7;
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+}
+
+.breakdown-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.breakdown-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.total-payable-card {
+    background: #1d4ed8;
+    color: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
+}
+
+.total-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 2px;
+}
+
+.total-amount {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.total-amount span {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+.breakdown-footer-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #64748b;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 14px;
+    line-height: 1.4;
+}
+
+.breakdown-footer-note svg {
+    width: 16px;
+    height: 16px;
+    color: #2563eb;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Declaration & Action Buttons
+   ========================================================================== */
+.declaration-container {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.declaration-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: #2563eb;
+    cursor: pointer;
+}
+
+.declaration-text {
+    font-size: 13px;
+    color: #334155;
+    line-height: 1.45;
+}
+
+.declaration-text strong {
+    color: #0f172a;
+}
+
+.action-buttons-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-submit-app {
+    background: #1d4ed8;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(29, 78, 216, 0.2);
+    transition: all 0.2s ease;
+}
+
+.btn-submit-app:hover:not(:disabled) {
+    background: #1e40af;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(29, 78, 216, 0.3);
+}
+
+.btn-submit-app:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-download-policy {
+    background: transparent;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius-md);
+    padding: 12px 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-download-policy:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+}
+
+/* Toast container */
+.toast-notice {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: none;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .occupancy-grid {
+        grid-template-columns: 1fr;
+    }
+    .breakdown-grid {
+        grid-template-columns: 1fr;
+    }
+    .wing-grid, .climate-grid {
+        grid-template-columns: 1fr;
+    }
+}

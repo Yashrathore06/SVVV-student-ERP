@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVVV ERP — Admin Management Console</title>
+    <link rel="icon" type="image/svg+xml" href="assets/svvv_logo.svg">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Admin Styles -->
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        
+        <!-- ================================================================
+             1. SIDEBAR NAVIGATION (CLEANED - NO AUDIT LOGS / SETTINGS)
+             ================================================================ -->
+        <aside class="admin-sidebar">
+            <!-- Brand Logo Header -->
+            <div class="sidebar-brand">
+                <div class="brand-logo-circle">
+                    <img src="assets/svvv_logo.svg" alt="SVVV Logo">
+                </div>
+                <div>
+                    <div class="brand-title">SVVV ERP</div>
+                    <div class="brand-subtitle">Admin Management</div>
+                </div>
+            </div>
+
+            <!-- Scrollable Nav List -->
+            <div class="sidebar-scrollable">
+                <!-- Group 1: Core ERP Admin -->
+                <div class="nav-category">
+                    <div class="nav-category-title">Core ERP Admin</div>
+                    <a href="#tab-dashboard-overview" class="nav-item nav-link active" data-tab="tab-dashboard-overview">
+                        <div class="nav-item-left">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            </svg>
+                            <span>Dashboard Overview</span>
+                        </div>
+                    </a>
+                    <a href="#tab-student-directory" class="nav-item nav-link" data-tab="tab-student-directory">
+                        <div class="nav-item-left">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            <span>Student Directory</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Group 2: Operational Modules -->
+                <div class="nav-category">
+                    <div class="nav-category-title">Services &amp; Modules</div>
+                    <a href="#tab-placement-drives" class="nav-item nav-link" data-tab="tab-placement-drives">
+                        <div class="nav-item-left">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span>Placement Drives</span>
+                        </div>
+                        <span class="nav-badge blue" id="sidebarDrivesBadge">4</span>
+                    </a>
+                    <a href="#tab-elective-seats" class="nav-item nav-link" data-tab="tab-elective-seats">
+                        <div class="nav-item-left">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                            <span>Generic Elective Seats</span>
+                        </div>
+                    </a>
+                    <a href="#tab-bonafide-approvals" class="nav-item nav-link" data-tab="tab-bonafide-approvals">
+                        <div class="nav-item-left">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Bonafide Approvals</span>
+                        </div>
+                        <span class="nav-badge danger" id="sidebarPendingCount">18</span>
+                    </a>
+                    <a href="#tab-hostel-warden" class="nav-item nav-link" data-tab="tab-hostel-warden">
+                        <div class="nav-item-left">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                            <span>Hostel Warden Desk</span>
+                        </div>
+                        <span class="nav-badge blue" id="sidebarHostelPendingCount">1</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer: Logout -->
+            <div class="sidebar-footer">
+                <button class="btn-sidebar-logout" onclick="handleAdminLogout()">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ================================================================
+             MAIN CONTENT AREA
+             ================================================================ -->
+        <main class="admin-main">
+            
+            <!-- Top App Bar -->
+            <header class="admin-topbar">
+                <div class="topbar-left">
+                    <div class="topbar-title">ADMIN MANAGEMENT CONSOLE</div>
+                    <div class="topbar-sub">Shri Vaishnav Vidyapeeth Vishwavidyalaya ERP System</div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="admin-user-badge">
+                        <div class="admin-avatar">SS</div>
+                        <div class="admin-meta">
+                            <span class="admin-name" id="adminName">Administrator</span>
+                            <span class="admin-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Container -->
+            <div class="admin-container">
+                
+                <!-- ================================================================
+                     TAB 1: #tab-dashboard-overview (ACTIVE BY DEFAULT)
+                     ================================================================ -->
+                <div id="tab-dashboard-overview" class="admin-tab-pane active">
+                    
+                    <!-- Hero Section: Executive Admin Control Panel -->
+                    <div class="admin-hero-card">
+                        <div class="hero-left-content">
+                            <h1 class="hero-title">Executive Admin Control Panel</h1>
+                        </div>
+
+                        <div class="hero-actions">
+                            <button class="btn-admin-action secondary" onclick="showToast('Exporting Institutional Activity Report (PDF)...')">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                </svg>
+                                Export Activity Report
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4 Top KPI Cards Grid -->
+                    <div class="admin-kpi-grid">
+                        <!-- KPI 1 -->
+                        <div class="kpi-card" onclick="switchAdminTab('tab-student-directory')" style="cursor:pointer;" title="Click to view Student Directory">
+                            <div class="kpi-top-row">
+                                <div>
+                                    <div class="kpi-label">TOTAL ENROLLED STUDENTS</div>
+                                    <div class="kpi-value" id="kpiTotalStudents">--</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI 2 -->
+                        <div class="kpi-card" onclick="switchAdminTab('tab-bonafide-approvals')" style="cursor:pointer;" title="Click to view Bonafide Desk">
+                            <div class="kpi-top-row">
+                                <div>
+                                    <div class="kpi-label">PENDING BONAFIDE</div>
+                                    <div class="kpi-value" id="kpiPendingBonafide">--</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI 3 -->
+                        <div class="kpi-card" onclick="switchAdminTab('tab-placement-drives')" style="cursor:pointer;" title="Click to view Placement Drives">
+                            <div class="kpi-top-row">
+                                <div>
+                                    <div class="kpi-label">ACTIVE PLACEMENT DRIVES</div>
+                                    <div class="kpi-value" id="kpiActiveDrives">--</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI 4 -->
+                        <div class="kpi-card" onclick="switchAdminTab('tab-elective-seats')" style="cursor:pointer;" title="Click to view Elective Quotas">
+                            <div class="kpi-top-row">
+                                <div>
+                                    <div class="kpi-label">GENERIC ELECTIVES ENROLLMENT</div>
+                                    <div class="kpi-value" id="kpiOpenElectives">--/120</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2-Column Overview Grid (Student Management + Post Announcements) -->
+                    <div class="admin-overview-grid">
+                        
+                        <!-- Left Container: Student Directory & Record Actions -->
+                        <div class="admin-card-section student-mgmt-card">
+                            <div class="card-section-header">
+                                <div>
+                                    <h3 class="card-section-title">Student Directory &amp; Record Actions</h3>
+                                    <p class="card-section-subtitle">Manage student enrollment credentials and academic directory records.</p>
+                                </div>
+                                <span class="badge-action-count" id="mgmtEnrolledCount">Enrolled</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="student-action-buttons-row">
+                                <button type="button" class="btn-student-action add" onclick="openAddStudentModal()">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                                    </svg>
+                                    ➕ Add New Student Record
+                                </button>
+                                <button type="button" class="btn-student-action delete" onclick="openDeleteStudentModal()">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    </svg>
+                                    🗑️ Delete Student Record
+                                </button>
+                            </div>
+
+                            <!-- Mini Directory Table Preview -->
+                            <div class="student-mini-preview-container">
+                                <div class="mini-preview-header">
+                                    <div class="mini-search-box">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                        </svg>
+                                        <input type="text" id="miniStudentSearch" placeholder="Search student by name or enrollment..." onkeyup="filterMiniStudentTable(this.value)">
+                                    </div>
+                                    <a href="javascript:void(0)" onclick="switchAdminTab('tab-student-directory')" style="font-size:0.78rem;color:var(--admin-accent-blue);font-weight:700;text-decoration:none;">
+                                        View Full Ledger &rarr;
+                                    </a>
+                                </div>
+
+                                <div class="mini-table-scroll">
+                                    <table class="admin-data-table mini">
+                                        <thead>
+                                            <tr>
+                                                <th>NAME</th>
+                                                <th>ENROLLMENT NO</th>
+                                                <th>BRANCH</th>
+                                                <th style="text-align:right;">ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mgmtStudentTableBody">
+                                            <!-- Dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Container: Post Campus Announcement (Admin Broadcast Console) -->
+                        <div class="admin-card-section campus-announcement-card">
+                            <div class="card-section-header">
+                                <div>
+                                    <h3 class="card-section-title">Post Campus Announcement</h3>
+                                    <p class="card-section-subtitle">Publish official notices to student portal dashboard feeds.</p>
+                                </div>
+                                <span class="badge-action-count" id="activeNoticesCountBadge">0 Active</span>
+                            </div>
+
+                            <form class="announcement-form" id="adminPostAnnouncementForm" onsubmit="handlePostAnnouncement(event)">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label">Notice Title</label>
+                                    <input type="text" class="admin-form-input" id="adminNoticeTitle" placeholder="e.g. Schedule for TCS Digital Campus Assessment" required>
+                                </div>
+
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label">Target Audience</label>
+                                    <select class="admin-form-select" id="adminNoticeAudience">
+                                        <option value="All Enrolled Students (Campus Wide)">All Enrolled Students (Campus Wide)</option>
+                                        <option value="B.Tech Computer Science & Engineering">B.Tech Computer Science &amp; Engineering</option>
+                                        <option value="B.Sc Computer Science">B.Sc Computer Science</option>
+                                        <option value="MBA">MBA</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>
+                                </div>
+
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label">Notice Content</label>
+                                    <textarea class="admin-form-textarea" id="adminNoticeContent" rows="3" placeholder="Enter announcement body text..." required></textarea>
+                                </div>
+
+                                <button type="submit" class="btn-publish-announcement" id="btnPublishAnnouncement">
+                                    Publish Announcement &rarr;
+                                </button>
+                            </form>
+
+                            <!-- Active Announcements List Widget (Below Form) -->
+                            <div class="active-announcements-widget">
+                                <div class="widget-subtitle-row">
+                                    <span>Currently Active Announcements</span>
+                                </div>
+                                <div class="active-notices-list" id="activeAnnouncementsList">
+                                    <!-- Populated dynamically with Title, Audience, Date, and red 🗑️ Remove button -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ================================================================
+                     TAB 2: #tab-student-directory
+                     ================================================================ -->
+                <div id="tab-student-directory" class="admin-tab-pane">
+                    
+                    <div class="admin-card-section">
+                        <div class="card-section-header">
+                            <div>
+                                <h3 class="card-section-title">Master Student Directory &amp; Academic Ledger</h3>
+                                <p class="card-section-subtitle">Search, filter, and inspect enrolled university candidates across branches and semesters.</p>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.75rem;">
+                                <span class="badge-action-count" id="studentTotalCountBadge">3,423 Enrolled</span>
+                                <button type="button" class="btn-export-csv" onclick="exportStudentDirectoryCsv()">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    Export Directory CSV
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Filter Toolbar -->
+                        <div class="directory-toolbar">
+                            <div class="filter-search-mini" style="max-width:320px;flex:1;">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                                <input type="text" id="studentSearchInput" placeholder="Search by name, enrollment no, email..." onkeyup="filterStudentDirectory()">
+                            </div>
+
+                            <div class="directory-filter-group">
+                                <select class="directory-select" id="studentBranchFilter" onchange="filterStudentDirectory()">
+                                    <option value="ALL">All Branches</option>
+                                    <option value="Computer Science & Engineering">Computer Science &amp; Engineering</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Electronics & Communication">Electronics &amp; Communication</option>
+                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                </select>
+
+                                <select class="directory-select" id="studentSemFilter" onchange="filterStudentDirectory()">
+                                    <option value="ALL">All Semesters</option>
+                                    <option value="1">Semester 1</option>
+                                    <option value="2">Semester 2</option>
+                                    <option value="3">Semester 3</option>
+                                    <option value="4">Semester 4</option>
+                                    <option value="5">Semester 5</option>
+                                    <option value="6">Semester 6</option>
+                                    <option value="7">Semester 7</option>
+                                    <option value="8">Semester 8</option>
+                                </select>
+
+                                <select class="directory-select" id="studentBacklogFilter" onchange="filterStudentDirectory()">
+                                    <option value="ALL">All Backlog Status</option>
+                                    <option value="CLEAR">0 Backlogs (Eligible)</option>
+                                    <option value="HAS_BACKLOG">Active Backlogs (> 0)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Student Directory Table -->
+                        <div style="overflow-x:auto;">
+                            <table class="admin-data-table" id="studentDirectoryTable">
+                                <thead>
+                                    <tr>
+                                        <th>ENROLLMENT NO</th>
+                                        <th>STUDENT NAME &amp; CONTACT</th>
+                                        <th>BRANCH / DEPARTMENT</th>
+                                        <th>SEMESTER</th>
+                                        <th>CGPA</th>
+                                        <th>BACKLOGS</th>
+                                        <th>GENDER</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentDirectoryTableBody">
+                                    <!-- Dynamic rows loaded from DB API / Seed -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Directory Footer -->
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem;font-size:0.78rem;color:var(--admin-text-muted);">
+                            <span id="directoryPaginationText">Showing students</span>
+                            <div style="display:flex;gap:0.3rem;" id="directoryPaginationBtns">
+                                <button style="padding:0.2rem 0.55rem;border:1px solid #cbd5e1;background:#ffffff;border-radius:4px;cursor:pointer;font-weight:700;">1</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================================================================
+                     TAB 3: #tab-placement-drives
+                     ================================================================ -->
+                <div id="tab-placement-drives" class="admin-tab-pane">
+                    
+                    <div class="admin-card-section">
+                        <div class="card-section-header">
+                            <div>
+                                <h3 class="card-section-title">Campus Placement Drives Manager &amp; Corporate Roster</h3>
+                                <p class="card-section-subtitle">Configure corporate recruitment pipelines, set eligibility criteria, and export applicant candidate rosters.</p>
+                            </div>
+                            <div style="display:flex;gap:0.6rem;align-items:center;">
+                                <button type="button" class="btn-admin-action secondary" onclick="loadAdminPlacementDrives()">
+                                    &#8635; Refresh Drives
+                                </button>
+                                <button type="button" class="btn-admin-action primary" onclick="openAddDriveModal()">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                                    </svg>
+                                    Add New Drive
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quick KPI Pills for Placements -->
+                        <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:160px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">ACTIVE DRIVES</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:var(--admin-primary);" id="drivesTabActiveCount">4</div>
+                            </div>
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:160px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">TOTAL APPLICANTS</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#059669;" id="drivesTabApplicantsCount">Loading...</div>
+                            </div>
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:160px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">HIGHEST PACKAGE</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#2563eb;">₹14.0 LPA</div>
+                            </div>
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:160px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">ELIGIBILITY CHECK</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#8b5cf6;">100% Automated</div>
+                            </div>
+                        </div>
+
+                        <!-- Placement Drives Grid -->
+                        <div class="placement-mini-grid" id="adminDrivesGridFull" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <div class="placement-alert-callout" style="margin-top:1.5rem;">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Live sync with student applicant roster and automated eligibility check. Changes immediately reflect in Student Placement Portal.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================================================================
+                     TAB 4: #tab-elective-seats
+                     ================================================================ -->
+                <div id="tab-elective-seats" class="admin-tab-pane">
+                    
+                    <div class="admin-card-section">
+                        <div class="card-section-header">
+                            <div>
+                                <h3 class="card-section-title">Generic Elective Seat Allocation</h3>
+                            </div>
+                            <div style="display:flex;gap:0.6rem;align-items:center;">
+                                <button type="button" class="btn-admin-action secondary" onclick="loadElectivesData()">
+                                    &#8635; Refresh Electives
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Electives Stats Grid -->
+                        <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:140px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">TOTAL ELECTIVES</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:var(--admin-primary);" id="electivesTotalCount">9 Courses</div>
+                            </div>
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:140px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">TOTAL INTAKE</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#2563eb;" id="electivesTotalIntake">720 Seats</div>
+                            </div>
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:140px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">SEATS OCCUPIED</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#059669;" id="electivesTotalOccupied">642 Enrolled</div>
+                            </div>
+                            <div style="background:#f8fafc;border:1px solid var(--admin-border);border-radius:8px;padding:0.85rem 1.25rem;flex:1;min-width:140px;">
+                                <div style="font-size:0.72rem;color:var(--admin-text-muted);font-weight:700;">AVAILABLE VACANCY</div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#d97706;" id="electivesTotalVacant">78 Remaining</div>
+                            </div>
+                        </div>
+
+                        <!-- Electives Admin Grid with Inline Seat Updaters -->
+                        <div class="electives-admin-grid" id="electivesAdminGrid">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================================================================
+                     TAB 5: #tab-bonafide-approvals
+                     ================================================================ -->
+                <div id="tab-bonafide-approvals" class="admin-tab-pane">
+                    
+                    <div class="admin-card-section">
+                        <div class="card-section-header">
+                            <div>
+                                <h3 class="card-section-title">Bonafide Certificate Digital Approvals &amp; Official Seal Desk</h3>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.75rem;">
+                                <span class="badge-action-count" id="tableActionBadge">24 Requiring Action</span>
+                            </div>
+                        </div>
+
+                        <!-- Filter Toolbar -->
+                        <div class="table-filter-toolbar" style="display:flex;justify-content:flex-end;">
+                            <div class="filter-search-mini">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                                <input type="text" placeholder="Filter by roll or student..." onkeyup="searchBonafideTable(this.value)">
+                            </div>
+                        </div>
+
+                        <!-- Full-width Requests Table -->
+                        <div style="overflow-x:auto;">
+                            <table class="admin-data-table">
+                                <thead>
+                                    <tr>
+                                        <th>STUDENT NAME</th>
+                                        <th>ENROLLMENT NO</th>
+                                        <th>SUBMITTED</th>
+                                        <th>STATUS / ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bonafideTableBody">
+                                    <!-- Dynamic rows loaded from DB API / Seed -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination Footer -->
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem;font-size:0.78rem;color:var(--admin-text-muted);">
+                            <span id="paginationText">Showing requests</span>
+                            <div style="display:flex;gap:0.3rem;">
+                                <button style="padding:0.2rem 0.55rem;border:1px solid #cbd5e1;background:#ffffff;border-radius:4px;cursor:pointer;font-weight:700;">1</button>
+                                <button style="padding:0.2rem 0.55rem;border:1px solid #cbd5e1;background:#ffffff;border-radius:4px;cursor:pointer;">2</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================================================================
+                     TAB 6: #tab-hostel-warden
+                     ================================================================ -->
+                <div id="tab-hostel-warden" class="admin-tab-pane">
+                    
+                    <div class="admin-card-section" id="hostelWardenDeskSection">
+                        <div class="card-section-header">
+                            <div>
+                                <h3 class="card-section-title">Hostel Warden Desk &amp; Residential Room Allocation</h3>
+                                <p class="card-section-subtitle">Review incoming student hostel applications, allot room numbers, and approve residential clearance.</p>
+                            </div>
+                            <div class="kpi-icon-box blue" style="width:36px;height:36px;">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div style="overflow-x:auto;">
+                            <table class="admin-table" id="hostelApplicationsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Application ID</th>
+                                        <th>Student Name &amp; Roll</th>
+                                        <th>Wing &amp; Occupancy</th>
+                                        <th>Climate</th>
+                                        <th>Total Fee</th>
+                                        <th>Status</th>
+                                        <th>Room Allocation</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hostelTableBody">
+                                    <tr>
+                                        <td colspan="8" style="text-align:center;padding:24px;color:var(--admin-text-muted);">
+                                            Loading hostel applications from PostgreSQL...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================================================================
+                     TAB 7: #tab-announcements
+                     ================================================================ -->
+                <div id="tab-announcements" class="admin-tab-pane">
+                    
+                    <div style="display:grid;grid-template-columns: 1fr 1fr;gap: 1.5rem;" class="admin-bottom-grid">
+                        
+                        <!-- Left: Post Announcement Form -->
+                        <div class="admin-card-section">
+                            <div class="card-section-header">
+                                <div>
+                                    <h3 class="card-section-title">Post Announcement to Student Portal</h3>
+                                    <p class="card-section-subtitle">Broadcast notifications instantly to enrolled students' dashboard feeds.</p>
+                                </div>
+                                <div class="kpi-icon-box cyan" style="width:36px;height:36px;">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <form class="announcement-form" id="adminAnnouncementForm" onsubmit="handlePostAnnouncement(event)">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label">Announcement Title</label>
+                                    <input type="text" class="admin-form-input" id="annTitle" placeholder="e.g. Schedule for TCS Digital Campus Recruitment Assessment" required value="Schedule for TCS Digital Campus Recruitment Assessment">
+                                </div>
+
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label">Target Audience</label>
+                                    <select class="admin-form-select" id="annAudience">
+                                        <option value="All Enrolled Students">All Enrolled Students (Campus Wide)</option>
+                                        <option value="B.Tech Final Year (2026-2027 Batch)">B.Tech Final Year (2026-2027 Batch)</option>
+                                        <option value="All Engineering Students">All Engineering Students</option>
+                                        <option value="Computer Science & Engineering">Computer Science &amp; Engineering Only</option>
+                                    </select>
+                                </div>
+
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label">Notice Content</label>
+                                    <textarea class="admin-form-textarea" id="annContent" placeholder="Enter notice details for students..." rows="5" required>Online coding assessment is confirmed for 24th May, 10:00 AM at the Main Computing Center (Lab 3 &amp; 4). Students must carry their institutional ID badges and updated resume copy.</textarea>
+                                </div>
+
+                                <label class="admin-checkbox-row">
+                                    <input type="checkbox" checked id="annPushCheckbox">
+                                    <span>Broadcast push notification to Student Mobile App &amp; Portal</span>
+                                </label>
+
+                                <button type="submit" class="btn-publish-announcement" id="btnPublishAnn">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                    </svg>
+                                    Publish Announcement
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Right: Announcement Broadcast History -->
+                        <div class="admin-card-section">
+                            <div class="card-section-header">
+                                <div>
+                                    <h3 class="card-section-title">Published Circulars &amp; Notice Feed</h3>
+                                    <p class="card-section-subtitle">Real-time broadcast history visible to campus students.</p>
+                                </div>
+                                <span class="badge-action-count">Active Notices</span>
+                            </div>
+
+                            <div class="announcement-history-list" id="announcementHistoryList">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+         Admin Modal 1: Add Campus Placement Drive Modal
+         ========================================================================== -->
+    <div id="addDriveModal" class="admin-modal-backdrop">
+        <div class="admin-modal-box">
+            <div class="admin-modal-header">
+                <div class="admin-modal-title">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--admin-primary)">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    Add Campus Placement Drive
+                </div>
+                <button type="button" class="admin-modal-close" onclick="closeAddDriveModal()">&times;</button>
+            </div>
+            <form id="createDriveForm" onsubmit="handleCreateDriveSubmit(event)">
+                <div class="admin-modal-body">
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group full-width">
+                            <label class="admin-form-label" for="driveCompanyName">Company Name <span class="req">*</span></label>
+                            <input type="text" id="driveCompanyName" class="admin-form-input" placeholder="e.g. Google India, TCS, Infosys" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="driveJobRole">Job Role / Designation <span class="req">*</span></label>
+                            <input type="text" id="driveJobRole" class="admin-form-input" placeholder="e.g. SDE-1, Cloud Engineer" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="drivePackageCtc">Package (CTC in LPA) <span class="req">*</span></label>
+                            <input type="number" step="0.1" min="1" id="drivePackageCtc" class="admin-form-input" placeholder="e.g. 8.5" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="driveMinCgpa">Minimum CGPA <span class="req">*</span></label>
+                            <input type="number" step="0.1" min="0" max="10" id="driveMinCgpa" class="admin-form-input" placeholder="e.g. 7.0" value="6.5" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="driveMaxBacklogs">Max Active Backlogs <span class="req">*</span></label>
+                            <input type="number" min="0" max="10" id="driveMaxBacklogs" class="admin-form-input" placeholder="0" value="0" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="driveAllowedBranch">Eligible Branches <span class="req">*</span></label>
+                            <input type="text" id="driveAllowedBranch" class="admin-form-input" placeholder="e.g. CSE,IT,ECE or ALL" value="CSE,IT" required>
+                            <span class="admin-form-hint">Comma separated (e.g. CSE, IT, ECE) or ALL</span>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="driveDeadline">Application Deadline <span class="req">*</span></label>
+                            <input type="date" id="driveDeadline" class="admin-form-input" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn-admin-action secondary" onclick="closeAddDriveModal()">Cancel</button>
+                    <button type="submit" class="btn-admin-action primary" id="btnSubmitDrive">
+                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Publish Placement Drive
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Admin Modal 2: Campus Placement Applicant Roster Modal
+         ========================================================================== -->
+    <div id="applicantRosterModal" class="admin-modal-backdrop">
+        <div class="admin-modal-box modal-lg">
+            <div class="admin-modal-header">
+                <div class="admin-modal-title">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--admin-primary)">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    Campus Placement Applicant Roster
+                </div>
+                <button type="button" class="admin-modal-close" onclick="closeApplicantRosterModal()">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <!-- Summary Banner -->
+                <div class="roster-summary-banner">
+                    <div class="roster-banner-info">
+                        <div>
+                            <div class="roster-company-badge" id="rosterCompanyName">Company Name</div>
+                            <div class="roster-role-badge" id="rosterJobRole">Role &amp; Details</div>
+                        </div>
+                    </div>
+                    <div class="roster-stats-pills">
+                        <span class="roster-pill" id="rosterPackagePill">&#8377;0 LPA</span>
+                        <span class="roster-pill highlight" id="rosterApplicantsCountPill">0 Applied</span>
+                    </div>
+                </div>
+
+                <!-- Action Toolbar: Search Filter & 1-Click Export CSV -->
+                <div class="roster-action-bar">
+                    <div class="roster-search-box">
+                        <svg width="16" height="16" fill="none" stroke="#64748b" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <input type="text" id="rosterSearchInput" placeholder="Filter by student name, roll number, branch..." oninput="handleRosterSearch(this.value)">
+                    </div>
+                    <button type="button" class="btn-export-csv" id="btnExportRosterCsv" onclick="exportCurrentRosterCsv()">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        1-Click Export CSV
+                    </button>
+                </div>
+
+                <!-- Responsive Roster Table -->
+                <div style="overflow-x:auto;">
+                    <table class="admin-table" id="rosterTable">
+                        <thead>
+                            <tr>
+                                <th>Roll / Enrollment</th>
+                                <th>Candidate Details</th>
+                                <th>Branch &amp; Sem</th>
+                                <th>CGPA</th>
+                                <th>Backlogs</th>
+                                <th>Applied At</th>
+                                <th>Resume Link</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rosterTableBody">
+                            <tr>
+                                <td colspan="8" style="text-align:center;padding:24px;color:var(--admin-text-muted);">
+                                    Select a drive to load applicant roster...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="admin-modal-footer">
+                <button type="button" class="btn-admin-action secondary" onclick="closeApplicantRosterModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Student Modal -->
+    <div id="addStudentModal" class="admin-modal-backdrop" style="display:none;">
+        <div class="admin-modal-box" style="max-width: 640px; background: #ffffff; border-radius: 14px; overflow: hidden; padding: 1.5rem; border: 1px solid var(--admin-border); box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);">
+            <div class="admin-modal-header" style="padding-bottom: 1rem; border-bottom: 1px solid var(--admin-border);">
+                <div class="modal-title-group">
+                    <h3 class="admin-modal-title" style="font-size: 1.15rem; font-weight: 800; color: var(--admin-text-main); margin-bottom: 2px;">➕ Add New Student Record</h3>
+                    <p class="admin-modal-subtitle" style="font-size: 0.8rem; color: var(--admin-text-muted);">Create enrollment credentials and sync profile with Supabase DB.</p>
+                </div>
+                <button type="button" class="btn-modal-close" onclick="closeAddStudentModal()" style="font-size: 1.5rem; cursor: pointer; border: none; background: none; color: var(--admin-text-muted);">&times;</button>
+            </div>
+            <form id="addStudentForm" onsubmit="handleCreateStudent(event)">
+                <div class="admin-modal-body" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding: 1.25rem 0;">
+                    <div class="admin-form-group" style="grid-column:1 / -1;">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Full Name *</label>
+                        <input type="text" class="admin-form-input" id="addStudentName" placeholder="e.g. Rahul Sharma" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Enrollment No *</label>
+                        <input type="text" class="admin-form-input" id="addStudentEnrollment" placeholder="e.g. 0827CS221099" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;text-transform:uppercase;">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Branch *</label>
+                        <select class="admin-form-select" id="addStudentBranch" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;background:#ffffff;">
+                            <option value="B.Tech Computer Science & Engineering">B.Tech Computer Science &amp; Engineering</option>
+                            <option value="B.Sc Computer Science">B.Sc Computer Science</option>
+                            <option value="MBA">MBA</option>
+                            <option value="BCA">BCA</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Semester *</label>
+                        <select class="admin-form-select" id="addStudentSemester" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;background:#ffffff;">
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                            <option value="3">Semester 3</option>
+                            <option value="4">Semester 4</option>
+                            <option value="5">Semester 5</option>
+                            <option value="6">Semester 6</option>
+                            <option value="7" selected>Semester 7</option>
+                            <option value="8">Semester 8</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">CGPA *</label>
+                        <input type="number" step="0.01" min="0" max="10" class="admin-form-input" id="addStudentCgpa" value="8.20" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Backlogs</label>
+                        <input type="number" min="0" class="admin-form-input" id="addStudentBacklogs" value="0" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Gender</label>
+                        <select class="admin-form-select" id="addStudentGender" style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;background:#ffffff;">
+                            <option value="Male" selected>Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Email Address *</label>
+                        <input type="email" class="admin-form-input" id="addStudentEmail" placeholder="rahul.cs22@svvv.edu.in" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Contact Phone *</label>
+                        <input type="tel" class="admin-form-input" id="addStudentPhone" placeholder="+91 98260 12345" required style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;">
+                    </div>
+
+                    <div class="admin-form-group" style="grid-column:1 / -1;">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Annual Family Income (INR)</label>
+                        <input type="number" min="0" step="1000" class="admin-form-input" id="addStudentFamilyIncome" value="500000" style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;">
+                    </div>
+                </div>
+
+                <div class="admin-modal-footer" style="padding-top:1rem; border-top:1px solid var(--admin-border); display:flex; justify-content:flex-end; gap:0.75rem;">
+                    <button type="button" class="btn-admin-action secondary" onclick="closeAddStudentModal()" style="padding:8px 16px;border-radius:8px;border:1px solid var(--admin-border);background:#f8fafc;cursor:pointer;font-weight:600;font-size:0.85rem;">Cancel</button>
+                    <button type="submit" class="btn-admin-action primary" id="btnSubmitAddStudent" style="padding:8px 18px;border-radius:8px;border:none;background:#2563eb;color:#ffffff;cursor:pointer;font-weight:700;font-size:0.85rem;">
+                        Save Student Record
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Student Modal -->
+    <div id="deleteStudentModal" class="admin-modal-backdrop" style="display:none;">
+        <div class="admin-modal-box" style="max-width: 520px; background: #ffffff; border-radius: 14px; overflow: hidden; padding: 1.5rem; border: 1px solid var(--admin-border); box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);">
+            <div class="admin-modal-header" style="padding-bottom: 1rem; border-bottom: 1px solid var(--admin-border);">
+                <div class="modal-title-group">
+                    <h3 class="admin-modal-title" style="color:#ef4444; font-size:1.15rem; font-weight:800; margin-bottom:2px;">🗑️ Delete Student Record</h3>
+                    <p class="admin-modal-subtitle" style="font-size:0.8rem; color:var(--admin-text-muted);">Permanently delete enrollment credentials and linked child records.</p>
+                </div>
+                <button type="button" class="btn-modal-close" onclick="closeDeleteStudentModal()" style="font-size: 1.5rem; cursor: pointer; border: none; background: none; color: var(--admin-text-muted);">&times;</button>
+            </div>
+            <form id="deleteStudentForm" onsubmit="handleDeleteStudent(event)">
+                <div class="admin-modal-body" style="padding: 1.25rem 0;">
+                    <p style="font-size:0.86rem;color:var(--admin-text-muted);margin-bottom:1rem;line-height:1.5;">
+                        Enter the enrollment number of the candidate to remove. All associated fees, results, resumes, hostel, and placement registrations will be permanently deleted.
+                    </p>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" style="display:block;font-size:0.8rem;font-weight:700;color:var(--admin-text-main);margin-bottom:4px;">Enrollment Number *</label>
+                        <input type="text" class="admin-form-input" id="deleteStudentEnrollmentInput" placeholder="e.g. 0827CS211001 or 24100BCA15195" required autofocus style="width:100%;padding:8px 12px;border:1px solid var(--admin-border);border-radius:8px;font-size:0.85rem;text-transform:uppercase;">
+                    </div>
+                </div>
+                <div class="admin-modal-footer" style="padding-top:1rem; border-top:1px solid var(--admin-border); display:flex; justify-content:flex-end; gap:0.75rem;">
+                    <button type="button" class="btn-admin-action secondary" onclick="closeDeleteStudentModal()" style="padding:8px 16px;border-radius:8px;border:1px solid var(--admin-border);background:#f8fafc;cursor:pointer;font-weight:600;font-size:0.85rem;">Cancel</button>
+                    <button type="submit" class="btn-admin-action danger" id="btnConfirmDeleteStudent" style="padding:8px 18px;border-radius:8px;border:none;background:#dc2626;color:#ffffff;cursor:pointer;font-weight:700;font-size:0.85rem;">
+                        Permanently Delete Record
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Component -->
+    <div id="adminToast" class="admin-toast">
+        <svg width="18" height="18" fill="none" stroke="#38bdf8" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span id="adminToastText">Action executed successfully.</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

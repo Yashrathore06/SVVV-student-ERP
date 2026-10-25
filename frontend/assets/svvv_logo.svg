@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Outer Blue Circular Border -->
+  <circle cx="100" cy="100" r="92" fill="#ffffff" stroke="#003399" stroke-width="6"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#003399" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="100" cy="100" r="62" fill="#f0f6ff" stroke="#003399" stroke-width="3"/>
+  
+  <!-- University Circular Arc Text -->
+  <path id="textArcTop" d="M 30,100 A 70,70 0 0,1 170,100" fill="none"/>
+  <path id="textArcBottom" d="M 170,100 A 70,70 0 0,1 30,100" fill="none"/>
+  <text font-size="9" font-family="'Inter', sans-serif" font-weight="bold" fill="#003399" text-anchor="middle">
+    <textPath href="#textArcTop" startOffset="50%">SHRI VAISHNAV VIDYAPEETH</textPath>
+  </text>
+  <text font-size="8.5" font-family="'Inter', sans-serif" font-weight="bold" fill="#003399" text-anchor="middle">
+    <textPath href="#textArcBottom" startOffset="50%">VISHWAVIDYALAYA • INDORE</textPath>
+  </text>
+  
+  <!-- Central Flame / Diya Emblem -->
+  <!-- Base Diya Bowl -->
+  <path d="M 72 125 C 72 142, 128 142, 128 125 Z" fill="#003399"/>
+  <ellipse cx="100" cy="125" rx="28" ry="4" fill="#ffb703"/>
+  
+  <!-- Outer Flame -->
+  <path d="M 100 70 C 80 95, 82 118, 100 124 C 118 118, 120 95, 100 70 Z" fill="#e63946"/>
+  <!-- Middle Flame -->
+  <path d="M 100 78 C 87 98, 88 116, 100 122 C 112 116, 113 98, 100 78 Z" fill="#fb8500"/>
+  <!-- Inner Core Flame -->
+  <path d="M 100 88 C 93 102, 94 114, 100 120 C 106 114, 107 102, 100 88 Z" fill="#ffb703"/>
+  <!-- Bright Center Spark -->
+  <circle cx="100" cy="116" r="3.5" fill="#ffffff"/>
+  
+  <!-- Knowledge Rays -->
+  <line x1="100" y1="58" x2="100" y2="65" stroke="#fb8500" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="80" y1="64" x2="85" y2="70" stroke="#fb8500" stroke-width="2" stroke-linecap="round"/>
+  <line x1="120" y1="64" x2="115" y2="70" stroke="#fb8500" stroke-width="2" stroke-linecap="round"/>
+</svg>
