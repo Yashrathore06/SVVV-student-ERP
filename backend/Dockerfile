@@ -8,6 +8,9 @@ COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
+# Grant executable permissions to maven wrapper
+RUN chmod +x ./mvnw
+
 # Step 3: Package Spring Boot application
 RUN ./mvnw clean package -DskipTests
 
