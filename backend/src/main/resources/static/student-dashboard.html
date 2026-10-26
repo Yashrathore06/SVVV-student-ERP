@@ -194,16 +194,16 @@
         </header>
 
         <!-- Sticky Horizontal Scrollable Module Nav Bar (Mobile <= 992px) -->
-        <nav class="mobile-top-nav-pills" id="mobileTopNavPills" aria-label="Mobile Module Navigation">
-            <button type="button" class="nav-pill active" data-view="dashboard" onclick="switchView('dashboard')">Dashboard</button>
-            <button type="button" class="nav-pill" data-view="academics" onclick="switchView('academics')">Academics</button>
-            <button type="button" class="nav-pill" data-view="fees" onclick="switchView('fees')">Fees</button>
-            <button type="button" class="nav-pill" data-view="hostel" onclick="if (typeof switchView === 'function' && document.getElementById('hostelView')) { switchView('hostel'); } else { window.location.href='hostel.html'; }">Hostel</button>
-            <button type="button" class="nav-pill" data-view="placement" onclick="switchView('placement')">Placements</button>
-            <button type="button" class="nav-pill" data-view="electives" onclick="switchView('electives')">Electives</button>
-            <button type="button" class="nav-pill" data-view="bonafide" onclick="switchView('bonafide')">Bonafide</button>
-            <button type="button" class="nav-pill" data-view="profile" onclick="switchView('profile')">Profile</button>
-        </nav>
+        <div class="mobile-top-nav-pills" id="mobileTopNavPills">
+            <a href="javascript:void(0)" onclick="switchView('dashboard')" class="nav-pill active" data-view="dashboard">Dashboard</a>
+            <a href="javascript:void(0)" onclick="switchView('academics')" class="nav-pill" data-view="academics">Academics</a>
+            <a href="javascript:void(0)" onclick="switchView('fees')" class="nav-pill" data-view="fees">Fees</a>
+            <a href="javascript:void(0)" onclick="switchView('hostel')" class="nav-pill" data-view="hostel">Hostel</a>
+            <a href="javascript:void(0)" onclick="switchView('placement')" class="nav-pill" data-view="placement">Placements</a>
+            <a href="javascript:void(0)" onclick="switchView('electives')" class="nav-pill" data-view="electives">Electives</a>
+            <a href="javascript:void(0)" onclick="switchView('bonafide')" class="nav-pill" data-view="bonafide">Bonafide</a>
+            <a href="javascript:void(0)" onclick="switchView('profile')" class="nav-pill" data-view="profile">Profile</a>
+        </div>
 
         <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
@@ -226,115 +226,6 @@
                     Centralized Student ERP Portal • Synced with Academic Registry
                 </p>
             </div>
-
-            <!-- Mobile Vertical Stacked Module Cards (Actual College ERP Mobile Layout) -->
-            <div class="mobile-modules-section">
-                <div class="mobile-modules-header">
-                    <span class="mobile-modules-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-                            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
-                            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
-                            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
-                        </svg>
-                        Core ERP Modules
-                    </span>
-                    <span class="mobile-modules-count">7 Services</span>
-                </div>
-                <div class="mobile-modules-grid">
-                    <!-- Module 1: Academics -->
-                    <a href="academics.html" onclick="if (typeof switchView === 'function' && document.getElementById('academicsView')) { event.preventDefault(); switchView('academics'); }" class="mobile-module-card">
-                        <div class="module-card-left">
-                            <div class="module-info">
-                                <span class="module-name">Academics</span>
-                                <span class="module-sub">Enrolled Subjects, Syllabus &amp; LMS Chat</span>
-                            </div>
-                        </div>
-                        <svg class="module-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-
-                    <!-- Module 2: Fees -->
-                    <a href="fees.html" onclick="if (typeof switchView === 'function' && document.getElementById('feesView')) { event.preventDefault(); switchView('fees'); }" class="mobile-module-card">
-                        <div class="module-card-left">
-                            <div class="module-info">
-                                <span class="module-name">Fees</span>
-                                <span class="module-sub">Fee Ledger, Online Payment &amp; Receipts</span>
-                            </div>
-                        </div>
-                        <svg class="module-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-
-                    <!-- Module 3: Hostel -->
-                    <a href="hostel.html" class="mobile-module-card">
-                        <div class="module-card-left">
-                            <div class="module-info">
-                                <span class="module-name">Hostel</span>
-                                <span class="module-sub">Hostel Registration &amp; Room Selection</span>
-                            </div>
-                        </div>
-                        <svg class="module-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-
-                    <!-- Module 4: Placement Drives -->
-                    <a href="placements.html" onclick="if (typeof switchView === 'function' && document.getElementById('placementView')) { event.preventDefault(); switchView('placement'); }" class="mobile-module-card">
-                        <div class="module-card-left">
-                            <div class="module-info">
-                                <span class="module-name">Placement Drives</span>
-                                <span class="module-sub">Campus Recruitment, Eligibility &amp; Call Letters</span>
-                            </div>
-                        </div>
-                        <svg class="module-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-
-                    <!-- Module 5: Generic Electives -->
-                    <a href="generic_electives.html" onclick="if (typeof switchView === 'function' && document.getElementById('electivesView')) { event.preventDefault(); switchView('electives'); }" class="mobile-module-card">
-                        <div class="module-card-left">
-                            <div class="module-info">
-                                <span class="module-name">Generic Electives</span>
-                                <span class="module-sub">Choice Based Credit System (CBCS) Seat Lock</span>
-                            </div>
-                        </div>
-                        <svg class="module-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-
-                    <!-- Module 6: Bonafide Certificates -->
-                    <a href="bonafide.html" onclick="if (typeof switchView === 'function' && document.getElementById('bonafideView')) { event.preventDefault(); switchView('bonafide'); }" class="mobile-module-card">
-                        <div class="module-card-left">
-                            <div class="module-info">
-                                <span class="module-name">Bonafide Certificates</span>
-                                <span class="module-sub">Apply Certificate, QR Verification &amp; Download</span>
-                            </div>
-                        </div>
-                        <svg class="module-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-
-                    <!-- Module 7: My Profile -->
-                    <a href="student_profile.html" onclick="if (typeof switchView === 'function' && document.getElementById('profileView')) { event.preventDefault(); switchView('profile'); }" class="mobile-module-card">
-                        <div class="module-card-left">
-                            <div class="module-info">
-                                <span class="module-name">My Profile</span>
-                                <span class="module-sub">Academic CGPA, Backlog Status &amp; Bio-Data</span>
-                            </div>
-                        </div>
-                        <svg class="module-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
             <!-- 2-Column Dashboard Grid -->
             <div class="dashboard-grid">
                 

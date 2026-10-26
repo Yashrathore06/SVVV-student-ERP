@@ -1377,10 +1377,13 @@ function switchView(viewName) {
     const targetView = (viewName === 'overview') ? 'dashboard' : (viewName || 'dashboard');
     document.querySelectorAll('.mobile-top-nav-pills .nav-pill').forEach(pill => {
         pill.classList.remove('active');
-        const pView = pill.getAttribute('data-view');
+        const pView = pill.getAttribute('data-view') || '';
+        const onclickAttr = pill.getAttribute('onclick') || '';
         if (pView === targetView || 
-           ((targetView === 'placement' || targetView === 'placements') && (pView === 'placement' || pView === 'placements')) ||
-           ((targetView === 'electives' || targetView === 'elective') && (pView === 'electives' || pView === 'elective'))) {
+            onclickAttr.includes(`'${targetView}'`) || 
+            onclickAttr.includes(`"${targetView}"`) ||
+           ((targetView === 'placement' || targetView === 'placements') && (pView === 'placement' || pView === 'placements' || onclickAttr.includes('placement'))) ||
+           ((targetView === 'electives' || targetView === 'elective') && (pView === 'electives' || pView === 'elective' || onclickAttr.includes('elective')))) {
             pill.classList.add('active');
         }
     });
@@ -1425,11 +1428,16 @@ function switchView(viewName) {
         }
     } else if (viewName === 'fees') {
         const feesViewElem = document.getElementById('feesView');
-        const navFeesElem = document.getElementById('navFees');
-        if (feesViewElem) feesViewElem.classList.add('active-view');
-        if (navFeesElem) navFeesElem.classList.add('active');
-        if (currentUser && currentUser.studentId) {
-            loadFeesData(currentUser.studentId);
+        if (feesViewElem) {
+            feesViewElem.classList.add('active-view');
+            const navFeesElem = document.getElementById('navFees');
+            if (navFeesElem) navFeesElem.classList.add('active');
+            if (currentUser && currentUser.studentId) {
+                loadFeesData(currentUser.studentId);
+            }
+        } else {
+            window.location.href = 'fees.html';
+            return;
         }
     } else if (viewName === 'examination') {
         const examViewElem = document.getElementById('examinationView');

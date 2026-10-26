@@ -55,3 +55,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// ==========================================================================
+// Global Module View Switcher
+// ==========================================================================
+function switchView(viewName) {
+    if (!viewName) return;
+    const path = window.location.pathname.toLowerCase();
+    if (viewName === 'hostel') {
+        if (!path.endsWith('hostel.html')) window.location.href = 'hostel.html';
+    } else if (viewName === 'fees') {
+        if (!path.endsWith('fees.html')) window.location.href = 'fees.html';
+    } else if (viewName === 'examination') {
+        if (!path.endsWith('examination.html')) window.location.href = 'examination.html';
+    } else {
+        window.location.href = 'student_dashboard.html#' + viewName;
+    }
+}

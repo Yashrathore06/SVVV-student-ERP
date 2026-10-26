@@ -196,16 +196,29 @@
         </header>
 
         <!-- Sticky Horizontal Scrollable Module Nav Bar (Mobile <= 992px) -->
-        <nav class="mobile-top-nav-pills" id="mobileTopNavPills" aria-label="Mobile Module Navigation">
-            <a href="student_dashboard.html" class="nav-pill" data-view="dashboard">Dashboard</a>
-            <a href="academics.html" class="nav-pill" data-view="academics">Academics</a>
-            <a href="fees.html" class="nav-pill" data-view="fees">Fees</a>
-            <a href="hostel.html" class="nav-pill active" data-view="hostel">Hostel</a>
-            <a href="placements.html" class="nav-pill" data-view="placement">Placements</a>
-            <a href="generic_electives.html" class="nav-pill" data-view="electives">Electives</a>
-            <a href="bonafide.html" class="nav-pill" data-view="bonafide">Bonafide</a>
-            <a href="student_profile.html" class="nav-pill" data-view="profile">Profile</a>
-        </nav>
+        <div class="mobile-top-nav-pills">
+            <a href="javascript:void(0)" onclick="switchView('dashboard')" class="nav-pill">Dashboard</a>
+            <a href="javascript:void(0)" onclick="switchView('academics')" class="nav-pill">Academics</a>
+            <a href="javascript:void(0)" onclick="switchView('fees')" class="nav-pill">Fees</a>
+            <a href="javascript:void(0)" onclick="switchView('hostel')" class="nav-pill active">Hostel</a>
+            <a href="javascript:void(0)" onclick="switchView('placement')" class="nav-pill">Placements</a>
+            <a href="javascript:void(0)" onclick="switchView('electives')" class="nav-pill">Electives</a>
+            <a href="javascript:void(0)" onclick="switchView('bonafide')" class="nav-pill">Bonafide</a>
+            <a href="javascript:void(0)" onclick="switchView('profile')" class="nav-pill">Profile</a>
+        </div>
+
+        <script>
+            function switchView(viewName) {
+                if (!viewName || viewName === 'hostel') return;
+                if (viewName === 'fees') {
+                    window.location.href = 'fees.html';
+                } else if (viewName === 'examination') {
+                    window.location.href = 'examination.html';
+                } else {
+                    window.location.href = 'student_dashboard.html#' + viewName;
+                }
+            }
+        </script>
 
         <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
