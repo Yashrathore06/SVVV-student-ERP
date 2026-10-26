@@ -624,8 +624,58 @@ body {
    ========================================================================== */
 @media (max-width: 992px) {
   .mobile-menu-btn {
+    display: none !important;
+  }
+
+  .mobile-top-nav-pills {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
-    /* Show Hamburger Menu Button on Mobile/Tablet */
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 14px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  }
+
+  .mobile-top-nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-pill {
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 20px;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+
+  .nav-pill:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+  }
+
+  .nav-pill.active {
+    background: #002d72 !important;
+    color: #ffffff !important;
+    border-color: #002d72 !important;
+    box-shadow: 0 2px 6px rgba(0, 45, 114, 0.25);
   }
 
   /* Mobile Slide-out Drawer Sidebar */
@@ -670,5 +720,15 @@ body {
 
   .card-title {
     font-size: 1.55rem;
+  }
+}
+
+.mobile-top-nav-pills {
+  display: none;
+}
+
+@media (min-width: 993px) {
+  .mobile-top-nav-pills {
+    display: none !important;
   }
 }

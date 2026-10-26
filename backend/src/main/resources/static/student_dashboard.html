@@ -183,25 +183,27 @@
                 <span class="portal-subheading">Shri Vaishnav Vidyapeeth Vishwavidyalaya</span>
             </div>
 
-            <!-- Student Profile Badge (Dynamic) & Mobile Menu Toggle -->
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <div class="user-badge-container">
-                    <div class="avatar-circle" id="userAvatar">YP</div>
-                    <div class="user-text-info">
-                        <span class="user-name" id="topStudentName">Loading Student...</span>
-                        <span class="user-roll" id="topRollNo">Roll No: --</span>
-                    </div>
+            <!-- Student Profile Badge (Dynamic) -->
+            <div class="user-badge-container">
+                <div class="avatar-circle" id="userAvatar">YP</div>
+                <div class="user-text-info">
+                    <span class="user-name" id="topStudentName">Loading Student...</span>
+                    <span class="user-roll" id="topRollNo">Roll No: --</span>
                 </div>
-                <button type="button" id="mobile-menu-btn" class="mobile-menu-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                    <span>Menu</span>
-                </button>
             </div>
         </header>
+
+        <!-- Sticky Horizontal Scrollable Module Nav Bar (Mobile <= 992px) -->
+        <nav class="mobile-top-nav-pills" id="mobileTopNavPills" aria-label="Mobile Module Navigation">
+            <button type="button" class="nav-pill active" data-view="dashboard" onclick="switchView('dashboard')">Dashboard</button>
+            <button type="button" class="nav-pill" data-view="academics" onclick="switchView('academics')">Academics</button>
+            <button type="button" class="nav-pill" data-view="fees" onclick="switchView('fees')">Fees</button>
+            <button type="button" class="nav-pill" data-view="hostel" onclick="if (typeof switchView === 'function' && document.getElementById('hostelView')) { switchView('hostel'); } else { window.location.href='hostel.html'; }">Hostel</button>
+            <button type="button" class="nav-pill" data-view="placement" onclick="switchView('placement')">Placements</button>
+            <button type="button" class="nav-pill" data-view="electives" onclick="switchView('electives')">Electives</button>
+            <button type="button" class="nav-pill" data-view="bonafide" onclick="switchView('bonafide')">Bonafide</button>
+            <button type="button" class="nav-pill" data-view="profile" onclick="switchView('profile')">Profile</button>
+        </nav>
 
         <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
@@ -243,9 +245,6 @@
                     <!-- Module 1: Academics -->
                     <a href="academics.html" onclick="if (typeof switchView === 'function' && document.getElementById('academicsView')) { event.preventDefault(); switchView('academics'); }" class="mobile-module-card">
                         <div class="module-card-left">
-                            <div class="module-icon-badge" style="background: #eff6ff; border: 1px solid #bfdbfe;">
-                                <span style="font-size: 1.35rem;">🎓</span>
-                            </div>
                             <div class="module-info">
                                 <span class="module-name">Academics</span>
                                 <span class="module-sub">Enrolled Subjects, Syllabus &amp; LMS Chat</span>
@@ -259,9 +258,6 @@
                     <!-- Module 2: Fees -->
                     <a href="fees.html" onclick="if (typeof switchView === 'function' && document.getElementById('feesView')) { event.preventDefault(); switchView('fees'); }" class="mobile-module-card">
                         <div class="module-card-left">
-                            <div class="module-icon-badge" style="background: #ecfdf5; border: 1px solid #a7f3d0;">
-                                <span style="font-size: 1.35rem;">💳</span>
-                            </div>
                             <div class="module-info">
                                 <span class="module-name">Fees</span>
                                 <span class="module-sub">Fee Ledger, Online Payment &amp; Receipts</span>
@@ -275,9 +271,6 @@
                     <!-- Module 3: Hostel -->
                     <a href="hostel.html" class="mobile-module-card">
                         <div class="module-card-left">
-                            <div class="module-icon-badge" style="background: #fffbeb; border: 1px solid #fde68a;">
-                                <span style="font-size: 1.35rem;">🏨</span>
-                            </div>
                             <div class="module-info">
                                 <span class="module-name">Hostel</span>
                                 <span class="module-sub">Hostel Registration &amp; Room Selection</span>
@@ -291,9 +284,6 @@
                     <!-- Module 4: Placement Drives -->
                     <a href="placements.html" onclick="if (typeof switchView === 'function' && document.getElementById('placementView')) { event.preventDefault(); switchView('placement'); }" class="mobile-module-card">
                         <div class="module-card-left">
-                            <div class="module-icon-badge" style="background: #eef2ff; border: 1px solid #c7d2fe;">
-                                <span style="font-size: 1.35rem;">💼</span>
-                            </div>
                             <div class="module-info">
                                 <span class="module-name">Placement Drives</span>
                                 <span class="module-sub">Campus Recruitment, Eligibility &amp; Call Letters</span>
@@ -307,9 +297,6 @@
                     <!-- Module 5: Generic Electives -->
                     <a href="generic_electives.html" onclick="if (typeof switchView === 'function' && document.getElementById('electivesView')) { event.preventDefault(); switchView('electives'); }" class="mobile-module-card">
                         <div class="module-card-left">
-                            <div class="module-icon-badge" style="background: #f0fdfa; border: 1px solid #99f6e4;">
-                                <span style="font-size: 1.35rem;">📚</span>
-                            </div>
                             <div class="module-info">
                                 <span class="module-name">Generic Electives</span>
                                 <span class="module-sub">Choice Based Credit System (CBCS) Seat Lock</span>
@@ -323,9 +310,6 @@
                     <!-- Module 6: Bonafide Certificates -->
                     <a href="bonafide.html" onclick="if (typeof switchView === 'function' && document.getElementById('bonafideView')) { event.preventDefault(); switchView('bonafide'); }" class="mobile-module-card">
                         <div class="module-card-left">
-                            <div class="module-icon-badge" style="background: #fff1f2; border: 1px solid #fecdd3;">
-                                <span style="font-size: 1.35rem;">📄</span>
-                            </div>
                             <div class="module-info">
                                 <span class="module-name">Bonafide Certificates</span>
                                 <span class="module-sub">Apply Certificate, QR Verification &amp; Download</span>
@@ -339,9 +323,6 @@
                     <!-- Module 7: My Profile -->
                     <a href="student_profile.html" onclick="if (typeof switchView === 'function' && document.getElementById('profileView')) { event.preventDefault(); switchView('profile'); }" class="mobile-module-card">
                         <div class="module-card-left">
-                            <div class="module-icon-badge" style="background: #f1f5f9; border: 1px solid #cbd5e1;">
-                                <span style="font-size: 1.35rem;">👤</span>
-                            </div>
                             <div class="module-info">
                                 <span class="module-name">My Profile</span>
                                 <span class="module-sub">Academic CGPA, Backlog Status &amp; Bio-Data</span>

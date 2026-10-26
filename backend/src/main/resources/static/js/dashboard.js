@@ -1373,7 +1373,22 @@ function switchView(viewName) {
     document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active-view'));
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 
-    if (viewName === 'academics') {
+    // Update active state on mobile top nav pills
+    const targetView = (viewName === 'overview') ? 'dashboard' : (viewName || 'dashboard');
+    document.querySelectorAll('.mobile-top-nav-pills .nav-pill').forEach(pill => {
+        pill.classList.remove('active');
+        const pView = pill.getAttribute('data-view');
+        if (pView === targetView || 
+           ((targetView === 'placement' || targetView === 'placements') && (pView === 'placement' || pView === 'placements')) ||
+           ((targetView === 'electives' || targetView === 'elective') && (pView === 'electives' || pView === 'elective'))) {
+            pill.classList.add('active');
+        }
+    });
+
+    if (viewName === 'hostel') {
+        window.location.href = 'hostel.html';
+        return;
+    } else if (viewName === 'academics') {
         academicsView.classList.add('active-view');
         navAcademics.classList.add('active');
         if (currentProfile) {
@@ -1390,13 +1405,13 @@ function switchView(viewName) {
     } else if (viewName === 'profile') {
         profileView.classList.add('active-view');
         navProfile.classList.add('active');
-    } else if (viewName === 'placement') {
+    } else if (viewName === 'placement' || viewName === 'placements') {
         placementView.classList.add('active-view');
         navPlacement.classList.add('active');
         if (currentUser && currentUser.studentId) {
             loadPlacementData(currentUser.studentId);
         }
-    } else if (viewName === 'electives') {
+    } else if (viewName === 'electives' || viewName === 'elective') {
         electivesView.classList.add('active-view');
         navElectives.classList.add('active');
         if (currentUser && currentUser.studentId) {

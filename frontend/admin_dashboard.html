@@ -129,16 +129,18 @@
                             <span class="admin-role">Super Admin</span>
                         </div>
                     </div>
-                    <button type="button" id="admin-mobile-menu-btn" class="mobile-menu-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                        <span>Menu</span>
-                    </button>
                 </div>
             </header>
+
+            <!-- Sticky Horizontal Scrollable Module Nav Bar (Admin Mobile <= 992px) -->
+            <nav class="mobile-top-nav-pills" id="adminMobileTopNavPills" aria-label="Admin Mobile Navigation">
+                <button type="button" class="nav-pill active" data-tab="tab-dashboard-overview" onclick="switchAdminTab('tab-dashboard-overview')">Overview</button>
+                <button type="button" class="nav-pill" data-tab="tab-student-directory" onclick="switchAdminTab('tab-student-directory')">Directory</button>
+                <button type="button" class="nav-pill" data-tab="tab-placement-drives" onclick="switchAdminTab('tab-placement-drives')">Placements</button>
+                <button type="button" class="nav-pill" data-tab="tab-elective-seats" onclick="switchAdminTab('tab-elective-seats')">Electives</button>
+                <button type="button" class="nav-pill" data-tab="tab-bonafide-approvals" onclick="switchAdminTab('tab-bonafide-approvals')">Bonafide</button>
+                <button type="button" class="nav-pill" data-tab="tab-hostel-warden" onclick="switchAdminTab('tab-hostel-warden')">Hostel</button>
+            </nav>
 
             <div id="admin-sidebar-overlay" class="sidebar-overlay"></div>
 
@@ -184,9 +186,6 @@
                             <!-- Admin Module 1: Student Directory -->
                             <a href="admin_students.html" onclick="if (typeof switchAdminTab === 'function') { event.preventDefault(); switchAdminTab('tab-student-directory'); }" class="mobile-module-card">
                                 <div class="module-card-left">
-                                    <div class="module-icon-badge" style="background: #f3e8ff; border: 1px solid #ddd6fe;">
-                                        <span style="font-size: 1.35rem;">👥</span>
-                                    </div>
                                     <div class="module-info">
                                         <span class="module-name">Student Directory</span>
                                         <span class="module-sub">Enrolled Students, Registry Records &amp; Profiles</span>
@@ -200,9 +199,6 @@
                             <!-- Admin Module 2: Placement Drives -->
                             <a href="admin_placements.html" onclick="if (typeof switchAdminTab === 'function') { event.preventDefault(); switchAdminTab('tab-placement-drives'); }" class="mobile-module-card">
                                 <div class="module-card-left">
-                                    <div class="module-icon-badge" style="background: #eef2ff; border: 1px solid #c7d2fe;">
-                                        <span style="font-size: 1.35rem;">💼</span>
-                                    </div>
                                     <div class="module-info">
                                         <span class="module-name">Placement Drives</span>
                                         <span class="module-sub">Campus Recruitment Schedules &amp; Eligible Candidates</span>
@@ -216,9 +212,6 @@
                             <!-- Admin Module 3: Generic Electives -->
                             <a href="admin_electives.html" onclick="if (typeof switchAdminTab === 'function') { event.preventDefault(); switchAdminTab('tab-elective-seats'); }" class="mobile-module-card">
                                 <div class="module-card-left">
-                                    <div class="module-icon-badge" style="background: #f0fdf4; border: 1px solid #bbf7d0;">
-                                        <span style="font-size: 1.35rem;">📚</span>
-                                    </div>
                                     <div class="module-info">
                                         <span class="module-name">Generic Elective Seats</span>
                                         <span class="module-sub">Course Quotas, Domain Capacities &amp; Allocations</span>
@@ -232,9 +225,6 @@
                             <!-- Admin Module 4: Bonafide Approvals -->
                             <a href="admin_bonafide.html" onclick="if (typeof switchAdminTab === 'function') { event.preventDefault(); switchAdminTab('tab-bonafide-approvals'); }" class="mobile-module-card">
                                 <div class="module-card-left">
-                                    <div class="module-icon-badge" style="background: #fff1f2; border: 1px solid #fecdd3;">
-                                        <span style="font-size: 1.35rem;">📄</span>
-                                    </div>
                                     <div class="module-info">
                                         <span class="module-name">Bonafide Approvals</span>
                                         <span class="module-sub">Application Review Desk, Issue &amp; Reject</span>
@@ -248,9 +238,6 @@
                             <!-- Admin Module 5: Hostel Warden Desk -->
                             <a href="#tab-hostel-warden" onclick="if (typeof switchAdminTab === 'function') { event.preventDefault(); switchAdminTab('tab-hostel-warden'); }" class="mobile-module-card">
                                 <div class="module-card-left">
-                                    <div class="module-icon-badge" style="background: #fffbeb; border: 1px solid #fde68a;">
-                                        <span style="font-size: 1.35rem;">🏨</span>
-                                    </div>
                                     <div class="module-info">
                                         <span class="module-name">Hostel Warden Desk</span>
                                         <span class="module-sub">Residential Quotas, Room Clearances &amp; Allotments</span>
@@ -264,9 +251,6 @@
                             <!-- Admin Module 6: Institutional Overview -->
                             <a href="#tab-dashboard-overview" onclick="if (typeof switchAdminTab === 'function') { event.preventDefault(); switchAdminTab('tab-dashboard-overview'); }" class="mobile-module-card">
                                 <div class="module-card-left">
-                                    <div class="module-icon-badge" style="background: #eff6ff; border: 1px solid #bfdbfe;">
-                                        <span style="font-size: 1.35rem;">📊</span>
-                                    </div>
                                     <div class="module-info">
                                         <span class="module-name">Dashboard Overview</span>
                                         <span class="module-sub">KPI Metrics, Quick Stats &amp; Campus Notices</span>

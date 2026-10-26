@@ -254,6 +254,15 @@ function switchAdminTab(targetTabId, clickedEl = null) {
         }
     });
 
+    // Update Mobile Top Nav Pills active state
+    document.querySelectorAll('.mobile-top-nav-pills .nav-pill').forEach(pill => {
+        pill.classList.remove('active');
+        const pillTab = pill.getAttribute('data-tab');
+        if (pillTab === tabId) {
+            pill.classList.add('active');
+        }
+    });
+
     if (clickedEl && clickedEl.classList) {
         clickedEl.classList.add('active');
     }
