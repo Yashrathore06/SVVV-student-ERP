@@ -43,10 +43,18 @@ body {
 }
 
 /* ==========================================================================
-   Top Header
+   Top Header & Mobile Toggle
    ========================================================================== */
 .portal-header {
   padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--input-border);
+}
+
+.header-left {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -87,8 +95,29 @@ body {
   text-transform: uppercase;
 }
 
+/* Mobile Hamburger Menu Toggle Button */
+.mobile-menu-btn {
+  display: none;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--input-border);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
 /* ==========================================================================
-   Main Content Area
+   Main Content & Dashboard Layout
    ========================================================================== */
 .main-wrapper {
   flex: 1;
@@ -98,6 +127,91 @@ body {
   padding: 1.5rem 1rem;
 }
 
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  max-width: 1280px;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+   Sidebar Navigation (Desktop & Mobile Drawer)
+   ========================================================================== */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--input-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: var(--transition);
+}
+
+.sidebar-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.sidebar-link:hover {
+  background-color: var(--primary-tint);
+  color: var(--primary);
+}
+
+.sidebar-link.active {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Sidebar Overlay Backdrop for Mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Login Card Component
+   ========================================================================== */
 .login-card {
   background: var(--bg-card);
   width: 100%;
@@ -117,6 +231,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -434,7 +549,7 @@ body {
 }
 
 /* ==========================================================================
-   Simple Modal Dialog (For Help / Forgot Password)
+   Simple Modal Dialog
    ========================================================================== */
 .modal-backdrop {
   position: fixed;
@@ -505,22 +620,55 @@ body {
 }
 
 /* ==========================================================================
-   Responsive Adjustments
+   Responsive Mobile & Tablet Adjustments (Fixes Mobile Sidebar Issue)
    ========================================================================== */
+@media (max-width: 992px) {
+  .mobile-menu-btn {
+    display: flex;
+    /* Show Hamburger Menu Button on Mobile/Tablet */
+  }
+
+  /* Mobile Slide-out Drawer Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -290px;
+    /* Off-screen hide */
+    width: 280px;
+    height: 100vh;
+    z-index: 999;
+    border-radius: 0;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+
+  .sidebar.active {
+    left: 0;
+    /* Slide-in when active */
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 500px) {
   .portal-header {
     padding: 1rem;
   }
+
   .univ-name {
     font-size: 0.95rem;
   }
+
   .login-card {
     padding: 1.75rem 1.25rem;
     box-shadow: none;
     border: none;
     background: transparent;
   }
+
   .card-title {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
   }
 }

@@ -19,7 +19,7 @@
         <!-- ================================================================
              1. SIDEBAR NAVIGATION (CLEANED - NO AUDIT LOGS / SETTINGS)
              ================================================================ -->
-        <aside class="admin-sidebar">
+        <aside class="admin-sidebar sidebar" id="admin-sidebar">
             <!-- Brand Logo Header -->
             <div class="sidebar-brand">
                 <div class="brand-logo-circle">
@@ -115,7 +115,7 @@
         <main class="admin-main">
             
             <!-- Top App Bar -->
-            <header class="admin-topbar">
+            <header class="admin-topbar portal-header">
                 <div class="topbar-left">
                     <div class="topbar-title">ADMIN MANAGEMENT CONSOLE</div>
                     <div class="topbar-sub">Shri Vaishnav Vidyapeeth Vishwavidyalaya ERP System</div>
@@ -129,8 +129,18 @@
                             <span class="admin-role">Super Admin</span>
                         </div>
                     </div>
+                    <button type="button" id="admin-mobile-menu-btn" class="mobile-menu-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        <span>Menu</span>
+                    </button>
                 </div>
             </header>
+
+            <div id="admin-sidebar-overlay" class="sidebar-overlay"></div>
 
             <!-- Main Container -->
             <div class="admin-container">
@@ -954,6 +964,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="js/script.js"></script>
     <script src="js/admin-dashboard.js"></script>
 </body>
 </html>

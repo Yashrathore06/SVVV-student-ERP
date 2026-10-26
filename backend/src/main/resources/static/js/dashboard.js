@@ -173,7 +173,45 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         handleLogout();
     });
+
+    // Mobile Navigation Drawer Toggle
+    initMobileSidebarNavigation();
 });
+
+// ==========================================================================
+// Mobile Sidebar Drawer Navigation Logic
+// ==========================================================================
+function initMobileSidebarNavigation() {
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const sidebar = document.querySelector(".sidebar");
+    const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+    if (mobileMenuBtn && sidebar) {
+        mobileMenuBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            sidebar.classList.toggle("active");
+            if (sidebarOverlay) sidebarOverlay.classList.toggle("active");
+        });
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener("click", function () {
+                sidebar.classList.remove("active");
+                sidebarOverlay.classList.remove("active");
+            });
+        }
+    }
+
+    // Auto-close sidebar on mobile when any sidebar navigation link is clicked
+    const allSidebarLinks = document.querySelectorAll(".sidebar-link, .nav-link, .nav-item a, .nav-item");
+    allSidebarLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 992) {
+                if (sidebar) sidebar.classList.remove("active");
+                if (sidebarOverlay) sidebarOverlay.classList.remove("active");
+            }
+        });
+    });
+}
 
 // ==========================================================================
 // Global Logout Handler
@@ -1326,6 +1364,12 @@ window.addEventListener('click', (e) => {
 // Navigation & View Switching
 // ==========================================================================
 function switchView(viewName) {
+    if (window.innerWidth <= 992) {
+        const sidebar = document.querySelector(".sidebar");
+        const sidebarOverlay = document.getElementById("sidebar-overlay");
+        if (sidebar) sidebar.classList.remove("active");
+        if (sidebarOverlay) sidebarOverlay.classList.remove("active");
+    }
     document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active-view'));
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 

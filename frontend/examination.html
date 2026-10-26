@@ -174,7 +174,7 @@
     <main class="main-content">
         
         <!-- Top Navbar -->
-        <header class="top-nav">
+        <header class="top-nav portal-header">
             <div class="nav-left">
                 <div class="portal-badge">
                     <span class="portal-badge-text">SVVV STUDENT SERVICE PORTAL</span>
@@ -182,14 +182,24 @@
                 </div>
             </div>
             
-            <div class="nav-right">
+            <div class="nav-right" style="display:flex;align-items:center;gap:0.75rem;">
                 <div class="user-meta">
                     <span class="user-name" id="topStudentName">Yash Rathore</span>
                     <span class="user-role" id="topRollNo">Roll No: 23100BTCSE15208 • B.Tech CSE Sem VII - Sec G</span>
                 </div>
                 <div class="user-avatar" id="userAvatar">YR</div>
+                <button type="button" id="mobile-menu-btn" class="mobile-menu-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Menu</span>
+                </button>
             </div>
         </header>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
         <!-- View Content -->
         <div class="content-wrapper">
@@ -597,5 +607,6 @@
 
         document.addEventListener('DOMContentLoaded', initExamPage);
     </script>
+    <script src="js/script.js"></script>
 </body>
 </html>

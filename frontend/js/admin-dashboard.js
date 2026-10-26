@@ -130,6 +130,7 @@ const defaultStudentsSeed = [
 document.addEventListener('DOMContentLoaded', () => {
     checkAdminSession();
     initTabNavigation();
+    initAdminMobileDrawerNavigation();
     loadDashboardStats();
     loadBonafideRequests();
     loadHostelApplications();
@@ -139,6 +140,41 @@ document.addEventListener('DOMContentLoaded', () => {
     loadActiveAnnouncements();
     loadAnnouncementHistory();
 });
+
+// ==========================================================================
+// Mobile Sidebar Drawer Navigation Logic (Admin Console)
+// ==========================================================================
+function initAdminMobileDrawerNavigation() {
+    const adminMenuBtn = document.getElementById("admin-mobile-menu-btn");
+    const adminSidebar = document.querySelector(".admin-sidebar") || document.querySelector("#admin-tab-sidebar");
+    const adminOverlay = document.getElementById("admin-sidebar-overlay");
+
+    if (adminMenuBtn && adminSidebar) {
+        adminMenuBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            adminSidebar.classList.toggle("active");
+            if (adminOverlay) adminOverlay.classList.toggle("active");
+        });
+
+        if (adminOverlay) {
+            adminOverlay.addEventListener("click", function () {
+                adminSidebar.classList.remove("active");
+                adminOverlay.classList.remove("active");
+            });
+        }
+    }
+
+    // Auto-close sidebar on mobile when any sidebar navigation link is clicked
+    const allSidebarLinks = document.querySelectorAll(".admin-sidebar .sidebar-link, .admin-sidebar .nav-link, .admin-sidebar .nav-item");
+    allSidebarLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 992) {
+                if (adminSidebar) adminSidebar.classList.remove("active");
+                if (adminOverlay) adminOverlay.classList.remove("active");
+            }
+        });
+    });
+}
 
 // ==========================================================================
 // 1. Session & Identity
@@ -186,6 +222,13 @@ function initTabNavigation() {
 
 function switchAdminTab(targetTabId, clickedEl = null) {
     if (!targetTabId) return;
+
+    if (window.innerWidth <= 992) {
+        const adminSidebar = document.querySelector(".admin-sidebar") || document.querySelector("#admin-tab-sidebar");
+        const adminOverlay = document.getElementById("admin-sidebar-overlay");
+        if (adminSidebar) adminSidebar.classList.remove("active");
+        if (adminOverlay) adminOverlay.classList.remove("active");
+    }
 
     // Normalize target identifier
     let tabId = targetTabId.replace('#', '');
