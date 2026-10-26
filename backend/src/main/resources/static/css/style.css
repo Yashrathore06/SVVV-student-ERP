@@ -622,16 +622,20 @@ body {
 /* ==========================================================================
    Responsive Mobile & Tablet Adjustments (Fixes Mobile Sidebar Issue)
    ========================================================================== */
+.mobile-top-nav-pills {
+  display: none;
+}
+
 @media (max-width: 992px) {
   .mobile-menu-btn {
     display: none !important;
   }
 
   .mobile-top-nav-pills {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    display: flex !important;
     gap: 8px;
     overflow-x: auto;
     padding: 10px 14px;
@@ -721,10 +725,6 @@ body {
   .card-title {
     font-size: 1.55rem;
   }
-}
-
-.mobile-top-nav-pills {
-  display: none;
 }
 
 @media (min-width: 993px) {

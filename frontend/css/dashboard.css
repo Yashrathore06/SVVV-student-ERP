@@ -5557,10 +5557,10 @@ body {
   }
 
   .mobile-top-nav-pills {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    display: flex !important;
     gap: 8px;
     overflow-x: auto;
     padding: 10px 14px;
